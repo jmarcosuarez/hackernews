@@ -13,8 +13,8 @@ class SearchStories extends Component {
     };
   }
 
-  onChange = (event) => {
-    const { value } = event.target;
+  onChange = (e) => {
+    const { value } = e.target;
     this.setState(applyQueryState(value));
   }
 

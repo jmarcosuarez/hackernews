@@ -14,11 +14,6 @@ class HomePage extends Component {
     this.props.onSendGetStoriesRequest();
   }
 
-  renderRow = item =>
-    <li key={item.objectID}>
-      <a href={item.url}>{item.title}</a>
-    </li>;
-
   renderLoader() {
     if (this.props.isFetching) {
       return (
@@ -40,42 +35,18 @@ class HomePage extends Component {
     }
     return null;
   }
-
-  renderContent() {
-    const { hits } = this.props;
-    if (hits && hits.length) {
-      return (
-        <div className={styles.pageContent}>
-          {this.renderStories()}
-        </div>
-      );
-    }
-    return null;
-  }
-
-  renderStories() {
-    const { hits } = this.props;
-    return (
-      <div className={styles.friends}>
-        <h1>Stories:</h1>
-        <ul>
-          {hits.map(this.renderRow)}
-        </ul>
-      </div>
-    );
-  }
-
+  
   render() {
     return (
       <Layout title="Welcome!">
         <div className={styles.wrapper}>
           <div className={styles.main}>
             {<SearchStories onFetchStories={this.props.onSendGetStoriesRequest} />}
-            {<Stories />}
+            {<Stories stories={this.props.hits} />}
             <ul>
               {this.renderLoader()}
               {this.renderError()}
-              {this.renderContent()}
+
             </ul>
 
           </div>
