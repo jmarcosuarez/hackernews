@@ -21,14 +21,11 @@ function getStoriesError(error) {
   };
 }
 
-export function sendGetStoriesRequest() {
-  return (dispatch, getState) => {
-    if (getState().stories.hits.length) {
-      return; // No need to fetch
-    }
+export function sendGetStoriesRequest(query = '') {
+  return (dispatch) => {
     dispatch(getStories());
     /* eslint-disable consistent-return */
-    return fetch('https://hn.algolia.com/api/v1/search?query=functional&page=0&hitsPerPage=100')
+    return fetch(`https://hn.algolia.com/api/v1/search?query=${query}&page=0&hitsPerPage=100`)
       .then(response => response.json())
       .then(stories => dispatch(getStoriesSuccess(stories)))
       .catch(error => dispatch(getStoriesError(error)));
