@@ -7,10 +7,11 @@ function getStories() {
   };
 }
 
-function getStoriesSuccess(stories) {
+function getStoriesSuccess(stories, query) {
   return {
     type: actionTypes.STORIES_GET_ALL_SUCCESS,
     stories,
+    query,
   };
 }
 
@@ -21,13 +22,13 @@ function getStoriesError(error) {
   };
 }
 
-export function sendGetStoriesRequest(query = '') {
+export function sendGetStoriesRequest(query = '', page = 0) {
   return (dispatch) => {
     dispatch(getStories());
     /* eslint-disable consistent-return */
-    return fetch(`https://hn.algolia.com/api/v1/search?query=${query}&page=0&hitsPerPage=100`)
+    return fetch(`https://hn.algolia.com/api/v1/search?query=${query}&page=${page}&hitsPerPage=100`)
       .then(response => response.json())
-      .then(stories => dispatch(getStoriesSuccess(stories)))
+      .then(stories => dispatch(getStoriesSuccess(stories, query)))
       .catch(error => dispatch(getStoriesError(error)));
   };
 }

@@ -28,6 +28,7 @@ const Story = ({ story }) => {
 
 Story.propTypes = {
   story: PropTypes.objectOf(PropTypes.shape({
+    created_at: PropTypes.string,
     objectID: PropTypes.string.isRequired,
     title: PropTypes.string,
     url: PropTypes.string,

@@ -5,8 +5,14 @@ function applyGetAllStories(state) {
   return { ...state, isFetching: true, error: null, hits: [] };
 }
 function applyGetAllSuccessStories(state, action) {
-  const { stories } = action;
-  return { ...state, isFetching: false, error: null, hits: stories.hits };
+  const { stories, query } = action;
+  return { 
+    ...state,
+    isFetching: false,
+    error: null,
+    hits: stories.hits,
+    page: stories.page,
+    query };
 }
 
 function applyGetAllErrorStories(state, action) {

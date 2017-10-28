@@ -41,14 +41,21 @@ class HomePage extends Component {
       <Layout title="Welcome!">
         <div className={styles.wrapper}>
           <div className={styles.main}>
-            {<SearchStories onFetchStories={this.props.onSendGetStoriesRequest} />}
-            {<Stories stories={this.props.hits} />}
+            {
+              <div>
+                <SearchStories onFetchStories={this.props.onSendGetStoriesRequest} />
+                <Stories
+                  stories={this.props.hits}
+                  query={this.props.query}
+                  page={this.props.page}
+                  onPaginatedSearch={this.props.onSendGetStoriesRequest}
+                />
+              </div>
+            }
             <ul>
               {this.renderLoader()}
               {this.renderError()}
-
             </ul>
-
           </div>
         </div>
       </Layout>
@@ -59,6 +66,8 @@ class HomePage extends Component {
 HomePage.propTypes = {
   isFetching: PropTypes.bool,
   error: PropTypes.string,
+  query: PropTypes.string,
+  page: PropTypes.number,
   onSendGetStoriesRequest: PropTypes.func.isRequired,
   hits: PropTypes.arrayOf(PropTypes.shape({
     objectID: PropTypes.string.isRequired,
@@ -71,16 +80,20 @@ HomePage.propTypes = {
 HomePage.defaultProps = {
   isFetching: false,
   error: '',
+  page: 0,
+  query: '',
   hits: [],
 };
 
 
 function mapStateToProps(state) {
-  const { isFetching, error, hits } = state.stories;
+  const { isFetching, error, hits, query, page } = state.stories;
   return {
     isFetching,
     error,
     hits,
+    query,
+    page,
   };
 }
 
