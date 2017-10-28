@@ -1,7 +1,7 @@
 @import "../../../static/stylesheets/abstracts/all.css";
 
 :root {
-  --spacer: 1rem;
+  --spacer: .25rem;
 }
 
 .buttonWrapper {
@@ -17,9 +17,9 @@
   font-size: 14px;
   font-weight: normal;
   background: var(--color4);
-  margin: var(--spacer);
-  padding: var(--spacer)  calc(var(--spacer) * 1.5);
-  color: #FFFFFF;
+  /*margin: var(--spacer);*/
+  padding: var(--spacer)  calc(var(--spacer) * 3);
+  color: color(#FFFFFF a(80%));
   text-decoration: none;
   text-align: center;
   display: block;
@@ -33,6 +33,7 @@
   &:hover {
   background-color: color(var(--color4) a(90%)); /* As rgba(255, 0, 0, .9)*/
   box-shadow: 0 18px 35px rgba(50,50,93,.1),0 8px 15px rgba(0,0,0,.07);
+  color: #FFFFFF;
   }
 
   &:focus {

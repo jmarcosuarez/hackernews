@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Layout, Button } from '../../components';
+import { Layout } from '../../components';
 import * as actions from '../../redux/actions';
 
 import styles from './Home.css';
@@ -66,9 +66,6 @@ class HomePage extends Component {
       <Layout title="Welcome!">
         <div className={styles.wrapper}>
           <div className={styles.main}>
-            <div className={styles.logo}>
-              <p>Logo</p>
-            </div>
 
             <h1>This is the main home Page</h1>
             <p>
@@ -85,7 +82,6 @@ class HomePage extends Component {
               {this.renderError()}
               {this.renderContent()}
             </ul>
-            <Button to="/">Get started</Button>
 
           </div>
         </div>

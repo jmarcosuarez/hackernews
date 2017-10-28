@@ -1,11 +1,6 @@
 @import "../../../static/stylesheets/containers/layout.css";
 @import "../../../static/stylesheets/abstracts/all.css";
 
-.logo {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
 .pageLoader {
   display: flex;
   justify-content: center;

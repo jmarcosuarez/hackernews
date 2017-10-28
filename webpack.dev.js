@@ -77,7 +77,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(), // Enable HMR
     new webpack.NamedModulesPlugin(),
     new webpack.DefinePlugin({
-      __DEVTOOLS__: true,
+      __DEVTOOLS__: false,
       'process.env.NODE_ENV': JSON.stringify('development'),
     }),
   ],
