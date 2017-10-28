@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import main from './main';
+import stories from './story';
 
 export default combineReducers({
-  main,
+  stories,
   routing: routerReducer,
 });

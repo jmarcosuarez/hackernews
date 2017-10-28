@@ -9,12 +9,13 @@ import styles from './Home.css';
 
 class HomePage extends Component {
   componentDidMount() {
-    this.props.onSendGetFriendsRequest();
+    this.props.onSendGetStoriesRequest();
   }
 
-  renderRow = friends =>
-    <li key={friends.id}>
-      {friends.first_name}
+  renderRow = stories =>
+    <li key={stories.id}>
+      {stories.title}
+      {stories.url}
     </li>;
 
   renderLoader() {
@@ -40,22 +41,24 @@ class HomePage extends Component {
   }
 
   renderContent() {
-    if (this.props.friends && this.props.friends.length) {
+    const { hits } = this.props.stories;
+    if (hits && hits.length) {
       return (
         <div className={styles.pageContent}>
-          {this.renderFriends()}
+          {this.renderStories()}
         </div>
       );
     }
     return null;
   }
 
-  renderFriends() {
+  renderStories() {
+    const { hits } = this.props.stories;
     return (
       <div className={styles.friends}>
-        <h1>friends</h1>
+        <h1>Stories:</h1>
         <ul>
-          {this.props.friends.map(this.renderRow)}
+          {hits.map(this.renderRow)}
         </ul>
       </div>
     );
@@ -93,10 +96,11 @@ class HomePage extends Component {
 HomePage.propTypes = {
   isFetching: PropTypes.bool,
   error: PropTypes.string,
-  onSendGetFriendsRequest: PropTypes.func.isRequired,
-  friends: PropTypes.arrayOf(PropTypes.shape({
+  onSendGetStoriesRequest: PropTypes.func.isRequired,
+  stories: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    first_name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
   })),
 
 };
@@ -104,22 +108,22 @@ HomePage.propTypes = {
 HomePage.defaultProps = {
   isFetching: false,
   error: '',
-  friends: [],
+  stories: [],
 };
 
 
 function mapStateToProps(state) {
-  const { isFetching, error, friends } = state.main;
+  const { isFetching, error, stories } = state;
   return {
     isFetching,
     error,
-    friends,
+    stories,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    onSendGetFriendsRequest: bindActionCreators(actions.sendGetFriendsRequest, dispatch),
+    onSendGetStoriesRequest: bindActionCreators(actions.sendGetStoriesRequest, dispatch),
   };
 }
 

@@ -1,5 +1,5 @@
-import { sendGetFriendsRequest } from './main';
+import { sendGetStoriesRequest } from './story';
 
 export {
-  sendGetFriendsRequest,
+  sendGetStoriesRequest,
 };
