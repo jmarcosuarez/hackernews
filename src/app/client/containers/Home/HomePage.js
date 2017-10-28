@@ -13,7 +13,7 @@ class HomePage extends Component {
   }
 
   renderRow = stories =>
-    <li key={stories.id}>
+    <li key={stories.objectID}>
       {stories.title}
       {stories.url}
     </li>;
@@ -41,7 +41,7 @@ class HomePage extends Component {
   }
 
   renderContent() {
-    const { hits } = this.props.stories;
+    const { hits } = this.props;
     if (hits && hits.length) {
       return (
         <div className={styles.pageContent}>
@@ -53,7 +53,7 @@ class HomePage extends Component {
   }
 
   renderStories() {
-    const { hits } = this.props.stories;
+    const { hits } = this.props;
     return (
       <div className={styles.friends}>
         <h1>Stories:</h1>
@@ -97,10 +97,10 @@ HomePage.propTypes = {
   isFetching: PropTypes.bool,
   error: PropTypes.string,
   onSendGetStoriesRequest: PropTypes.func.isRequired,
-  stories: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
+  hits: PropTypes.arrayOf(PropTypes.shape({
+    objectID: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
+    url: PropTypes.string,
   })),
 
 };
@@ -108,16 +108,16 @@ HomePage.propTypes = {
 HomePage.defaultProps = {
   isFetching: false,
   error: '',
-  stories: [],
+  hits: [],
 };
 
 
 function mapStateToProps(state) {
-  const { isFetching, error, stories } = state;
+  const { isFetching, error, hits } = state.stories;
   return {
     isFetching,
     error,
-    stories,
+    hits,
   };
 }
 
