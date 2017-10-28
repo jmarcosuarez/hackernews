@@ -27,7 +27,11 @@ const Story = ({ story }) => {
 };
 
 Story.propTypes = {
-  story: PropTypes.string.isRequired,
+  story: PropTypes.objectOf(PropTypes.shape({
+    objectID: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    url: PropTypes.string,
+  })).isRequired,
 };
 
 export default Story;
