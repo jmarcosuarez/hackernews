@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { compose } from 'recompose';
 
 import Story from './Story';
+import withLoading from '../../../decorators/withLoading';
+
 import styles from '../Home.css';
 
 class Stories extends Component {
@@ -46,4 +49,9 @@ Stories.propTypes = {
   onPaginatedSearch: PropTypes.func.isRequired,
 };
 
-export default Stories;
+// // now compose!
+const decorate = compose(
+  withLoading,
+);
+
+export default decorate(Stories);

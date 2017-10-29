@@ -2,27 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+// import { compose } from 'recompose';
 import { Layout } from '../../components';
 import * as actions from '../../redux/actions';
 
 import Stories from './components/Stories';
 import SearchStories from './components/SearchStories';
+// import withLoading from '../../decorators/withLoading';
+
 import styles from './Home.css';
 
 class HomePage extends Component {
   componentDidMount() {
     this.props.onSendGetStoriesRequest();
-  }
-
-  renderLoader() {
-    if (this.props.isFetching) {
-      return (
-        <div className={styles.pageLoader}>
-          <div />
-        </div>
-      );
-    }
-    return null;
   }
 
   renderError() {
@@ -48,12 +40,12 @@ class HomePage extends Component {
                   stories={this.props.hits}
                   query={this.props.query}
                   page={this.props.page}
+                  isFetching={this.props.isFetching}
                   onPaginatedSearch={this.props.onSendGetStoriesRequest}
                 />
               </div>
             }
             <ul>
-              {this.renderLoader()}
               {this.renderError()}
             </ul>
           </div>
@@ -104,3 +96,13 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+
+// const withProductData = connect(mapStateToProps, mapDispatchToProps);
+
+// // now compose!
+// const decorate = compose(
+//   withProductData,
+//   withLoading,
+// );
+
+// export default decorate(HomePage);
