@@ -40,7 +40,7 @@ class HomePage extends Component {
                   stories={this.props.hits}
                   query={this.props.query}
                   page={this.props.page}
-                  isFetching={this.props.isFetching}
+                  isLoading={this.props.isFetching}
                   onPaginatedSearch={this.props.onSendGetStoriesRequest}
                 />
               </div>

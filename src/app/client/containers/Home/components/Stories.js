@@ -4,14 +4,11 @@ import { compose } from 'recompose';
 
 import Story from './Story';
 import withLoading from '../../../decorators/withLoading';
+import withPaginated from '../../../decorators/withPaginated';
 
 import styles from '../Home.css';
 
 class Stories extends Component {
-  onClick = () => {
-    this.props.onPaginatedSearch(this.props.query, this.props.page + 1);
-  }
-
   render() {
     const { stories } = this.props;
     return (
@@ -23,16 +20,6 @@ class Stories extends Component {
             story={story}
           />,
         )}
-        <div className="interactions">
-          {
-            <button
-              type="button"
-              onClick={this.onClick}
-            >
-              More
-            </button>
-          }
-        </div>
       </div>
     );
   }
@@ -52,6 +39,7 @@ Stories.propTypes = {
 // // now compose!
 const decorate = compose(
   withLoading,
+  withPaginated,
 );
 
 export default decorate(Stories);

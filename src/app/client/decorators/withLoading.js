@@ -7,7 +7,7 @@ const withLoading = Component => props =>
   <div>
     <Component {...props} />
     {
-      props.isFetching &&
+      props.isLoading &&
         <div className={styles.pageLoader}>
           <div />
         </div>
@@ -15,7 +15,7 @@ const withLoading = Component => props =>
   </div>;
 
 withLoading.propTypes = {
-  isFetching: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 export default withLoading;
