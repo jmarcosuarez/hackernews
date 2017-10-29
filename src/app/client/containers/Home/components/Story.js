@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../Home.css';
+import styles from './Styles.css';
 
 const Story = ({ story }) => {
   const {
@@ -12,23 +12,22 @@ const Story = ({ story }) => {
   } = story;
 
   return (
-    <div className="story">
-      <span>
+    <ul className={styles.story}>
+      <li>
         <a href={url}>{title}</a>
-      </span>
-      <span>
+      </li>
+      <li>
         {author}
-      </span>
-      <span>
+      </li>
+      <li>
         {points}
-      </span>
-    </div>
+      </li>
+    </ul>
   );
 };
 
 Story.propTypes = {
   story: PropTypes.objectOf(PropTypes.shape({
-    created_at: PropTypes.string,
     objectID: PropTypes.string.isRequired,
     title: PropTypes.string,
     url: PropTypes.string,

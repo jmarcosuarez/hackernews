@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+/* eslint-disable react/prop-types */
 const withPaginated = Component =>
   class decorate extends Component {
     onClick = () => {

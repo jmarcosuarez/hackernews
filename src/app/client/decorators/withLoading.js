@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './styles.css';
-
+/* eslint-disable react/prop-types */
 const withLoading = Component => props =>
   <div>
     <Component {...props} />

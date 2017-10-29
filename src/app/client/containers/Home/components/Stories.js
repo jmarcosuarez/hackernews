@@ -3,16 +3,15 @@ import PropTypes from 'prop-types';
 import { compose } from 'recompose';
 
 import Story from './Story';
-import withLoading from '../../../decorators/withLoading';
-import withPaginated from '../../../decorators/withPaginated';
+import { withLoading, withPaginated } from '../../../decorators';
 
-import styles from '../Home.css';
-
+import styles from './Styles.css';
+/* eslint-disable react/prefer-stateless-function */
 class Stories extends Component {
   render() {
     const { stories } = this.props;
     return (
-      <div className={styles.pageContent}>
+      <div className={styles.stories}>
         <h1>Stories:</h1>
         {(stories || []).map(story =>
           <Story
@@ -31,9 +30,6 @@ Stories.propTypes = {
     title: PropTypes.string,
     url: PropTypes.string,
   })).isRequired,
-  query: PropTypes.string.isRequired,
-  page: PropTypes.number.isRequired,
-  onPaginatedSearch: PropTypes.func.isRequired,
 };
 
 // // now compose!

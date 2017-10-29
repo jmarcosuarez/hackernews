@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './Styles.css';
+
 const applyQueryState = query => () => ({
   query,
 });
@@ -29,7 +31,7 @@ class SearchStories extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className={styles.searchStories} onSubmit={this.handleSubmit}>
         <input
           type="text"
           value={this.state.query}
