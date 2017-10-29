@@ -15,6 +15,13 @@ function getStoriesSuccess(stories, query) {
   };
 }
 
+function attachStoriesSuccess(stories) {
+  return {
+    type: actionTypes.STORIES_ATTACH_ALL_SUCCESS,
+    stories,
+  };
+}
+
 function getStoriesError(error) {
   return {
     type: actionTypes.STORIES_GET_ALL_ERROR,
@@ -28,7 +35,11 @@ export function sendGetStoriesRequest(query = '', page = 0) {
     /* eslint-disable consistent-return */
     return fetch(`https://hn.algolia.com/api/v1/search?query=${query}&page=${page}&hitsPerPage=100`)
       .then(response => response.json())
-      .then(stories => dispatch(getStoriesSuccess(stories, query)))
+      .then(
+        page === 0
+          ? stories => dispatch(getStoriesSuccess(stories, query))
+          : stories => dispatch(attachStoriesSuccess(stories)),
+          )
       .catch(error => dispatch(getStoriesError(error)));
   };
 }
