@@ -1,5 +1,8 @@
-# minimal-react-boilerplate
-Minimal react boilerplate - babel/webpack2, postCSS/css-modules, Jest/Enzyme
+# hackernews
+Using functional composition to create a paginated and infinite scroll list component in React
+
+The App component renders a form and a list. The form is used as input to search for stories on the Hacker News platform. Submitting the form leads to a request to the Hacker News API. Once the search request succeeds, the list is used to display the list of stories.
+
 
 ## Installation
 `npm install` to install dependencies
