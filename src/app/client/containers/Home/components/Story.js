@@ -10,7 +10,6 @@ const Story = ({ story }) => {
     author,
     points,
   } = story;
-
   return (
     <ul className={styles.story}>
       <li>

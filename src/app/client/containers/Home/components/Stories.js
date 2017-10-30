@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import { compose } from 'recompose';
 
 import Story from './Story';
-import { withLoading, withPaginated } from '../../../decorators';
+import {
+  withLoading,
+  // withPaginated,
+  withInfiniteScroll,
+} from '../../../decorators';
 
 import styles from './Styles.css';
 /* eslint-disable react/prefer-stateless-function */
@@ -32,10 +36,11 @@ Stories.propTypes = {
   })).isRequired,
 };
 
-// // now compose!
+// now compose!
 const decorate = compose(
   withLoading,
-  withPaginated,
+  // withPaginated,
+  withInfiniteScroll,
 );
 
 export default decorate(Stories);

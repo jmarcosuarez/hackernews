@@ -33,7 +33,7 @@ export function sendGetStoriesRequest(query = '', page = 0) {
   return (dispatch) => {
     dispatch(getStories());
     /* eslint-disable consistent-return */
-    return fetch(`https://hn.algolia.com/api/v1/search?query=${query}&page=${page}&hitsPerPage=100`)
+    return fetch(`https://hn.algolia.com/api/v1/search?query=${query}&page=${page}&hitsPerPage=25`)
       .then(response => response.json())
       .then(
         page === 0
