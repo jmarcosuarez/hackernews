@@ -36,11 +36,22 @@ Stories.propTypes = {
   })).isRequired,
 };
 
+const loadingCondition = props =>
+  props.isLoading;
+
+const paginatedCondition = props => 
+  props.page !== null && !props.isLoading && props.error;
+
+const infiniteScrollCondition = props =>
+  props.stories.length
+  && !props.isLoading
+  && !props.error;
+
 // now compose!
 const decorate = compose(
-  withLoading,
-  withPaginated,
-  withInfiniteScroll,
+  withLoading(loadingCondition),
+  withPaginated(paginatedCondition),
+  withInfiniteScroll(infiniteScrollCondition),
 );
 
 export default decorate(Stories);

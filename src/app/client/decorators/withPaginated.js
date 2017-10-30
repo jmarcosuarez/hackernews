@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 /* eslint-disable react/prop-types */
-const withPaginated = Component =>
+const withPaginated = conditionFn => Component =>
   class decorate extends Component {
     onClick = () => {
       this.props.onPaginatedSearch(this.props.query, this.props.page + 1);
@@ -13,7 +13,7 @@ const withPaginated = Component =>
 
           <div className="interactions">
             {
-              (this.props.page !== null && !this.props.isLoading && this.props.error) &&
+              conditionFn(this.props) &&
               <div>
                 <div>
                   Something went wrong...

@@ -43,7 +43,7 @@ class HomePage extends Component {
 }
 
 HomePage.propTypes = {
-  isFetching: PropTypes.bool,
+  isFetching: PropTypes.bool.isRequired,
   error: PropTypes.string,
   query: PropTypes.string,
   page: PropTypes.number,
@@ -52,16 +52,14 @@ HomePage.propTypes = {
     objectID: PropTypes.string.isRequired,
     title: PropTypes.string,
     url: PropTypes.string,
-  })),
+  })).isRequired,
 
 };
 
 HomePage.defaultProps = {
-  isFetching: false,
   error: '',
   page: 0,
   query: '',
-  hits: [],
 };
 
 
