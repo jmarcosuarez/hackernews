@@ -16,17 +16,6 @@ class HomePage extends Component {
   componentDidMount() {
     this.props.onSendGetStoriesRequest();
   }
-
-  renderError() {
-    if (this.props.error) {
-      return (
-        <div className={styles.pageError}>
-          Something went wrong.
-        </div>
-      );
-    }
-    return null;
-  }
   
   render() {
     return (
@@ -40,14 +29,12 @@ class HomePage extends Component {
                   stories={this.props.hits}
                   query={this.props.query}
                   page={this.props.page}
+                  error={this.props.error}
                   isLoading={this.props.isFetching}
                   onPaginatedSearch={this.props.onSendGetStoriesRequest}
                 />
               </div>
             }
-            <ul>
-              {this.renderError()}
-            </ul>
           </div>
         </div>
       </Layout>

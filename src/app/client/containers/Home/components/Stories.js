@@ -5,7 +5,7 @@ import { compose } from 'recompose';
 import Story from './Story';
 import {
   withLoading,
-  // withPaginated,
+  withPaginated,
   withInfiniteScroll,
 } from '../../../decorators';
 
@@ -39,7 +39,7 @@ Stories.propTypes = {
 // now compose!
 const decorate = compose(
   withLoading,
-  // withPaginated,
+  withPaginated,
   withInfiniteScroll,
 );
 

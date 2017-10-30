@@ -14,6 +14,11 @@ const withInfiniteScroll = Component =>
       isLoading: PropTypes.bool.isRequired,
       page: PropTypes.number.isRequired,
       query: PropTypes.string.isRequired,
+      error: PropTypes.string,
+    }
+
+    static defaultProps = {
+      error: '',
     }
 
     componentDidMount() {
@@ -25,12 +30,13 @@ const withInfiniteScroll = Component =>
     }
 
     onScroll = (event) => {
-      const { stories, onPaginatedSearch, isLoading, query, page } = this.props;
+      const { stories, onPaginatedSearch, isLoading, query, page, error } = this.props;
       const element = event.target.scrollingElement;
       if (
         (element.scrollHeight - element.scrollTop === element.clientHeight) &&
         stories.length &&
-        !isLoading
+        !isLoading &&
+        !error
       ) {
         onPaginatedSearch(query, page + 1);
       }

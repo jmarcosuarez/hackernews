@@ -13,13 +13,18 @@ const withPaginated = Component =>
 
           <div className="interactions">
             {
-              (this.props.page !== null && !this.props.isLoading) &&
-              <button
-                type="button"
-                onClick={this.onClick}
-              >
-                More
-              </button>
+              (this.props.page !== null && !this.props.isLoading && this.props.error) &&
+              <div>
+                <div>
+                  Something went wrong...
+                </div>
+                <button
+                  type="button"
+                  onClick={this.onClick}
+                >
+                  More
+                </button>
+              </div>
             }
           </div>
         </div>
@@ -31,6 +36,7 @@ withPaginated.propTypes = {
   isLoading: PropTypes.bool,
   page: PropTypes.number,
   query: PropTypes.string,
+  error: PropTypes.string,
   onPaginatedSearch: PropTypes.func.isRequired,
 };
 
