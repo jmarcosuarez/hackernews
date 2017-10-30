@@ -6,9 +6,9 @@ The App component renders a form and a list. The form is used as input to search
 By using higher order components, you can opt in and out of functionalities on basic components. The basic components can take care on only one responsibility, and composing them you get advanced components suitable to real life environments.
 
 So far, the List component is able to opt-in to these functionalities: 
-⋅⋅* Loader: Showing a loading indicator while is fetching data.
-⋅⋅* Paginated list: Fetching more list items by using a More button at the end of the List.
-⋅⋅* Infinite scroll: While the More button fetches manually more items, the infinite scroll should fetch more items once the user scrolls to the end of the list. Now, the two HOCs, paginated list and infinite scroll, can be opted-in exclusively to substitute the functionalities of manual and automatic retrieval of the next page of the list.
+  * Loader: Showing a loading indicator while is fetching data.
+  * Paginated list: Fetching more list items by using a More button at the end of the List.
+  * Infinite scroll: While the More button fetches manually more items, the infinite scroll should fetch more items once the user scrolls to the end of the list. Now, the two HOCs, paginated list and infinite scroll, can be opted-in exclusively to substitute the functionalities of manual and automatic retrieval of the next page of the list.
 
 
 ## Installation
